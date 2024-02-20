@@ -1,0 +1,60 @@
+* { margin: 0; padding: 0; box-sizing: border-box;}   /* 전체선택자 */
+#app { width: 1000px; margin: 0 auto;}
+        header , nav , footer {  
+            height: 50px; 
+            display: flex; justify-content: center; align-items: center; 
+        }
+        
+        header { letter-spacing: 1.5em;}  /* 글자 간격 */
+        header , nav , main { margin-bottom: 10px;}
+        aside { width: 100px; height: 200px; background-color: gray; border-radius: 20px;}
+        section { width: 800px; min-height: 600px;}  /* min height - 최소높이*/
+        main { display: flex;} /* flex를 넣으면 가로로 모양이 나온다 근데 겉에 틀이 크기가 정해져야 플렉스를 할수있다 */
+        #search { width: 300px; border: 1px solid #ddd;
+                  border-radius: 20px;                      
+                  display: flex;
+                  align-items: center;   /* Felexbox를 사용하여 요소의 자식 요소를 수직으로 가운데 정렬하는 CSS*/
+      
+                  height: 30px;                                
+        }
+             
+        footer{width: 1000px; background-color: gray; border-radius: 20px;}
+        #search input {
+            width: 250px;
+            margin-left: 20px;
+            margin-right: 5px;
+            border: none;  /* 테두리를 없앤다*/
+        }
+       
+        header { 
+            display: flex; 
+            justify-content: space-between; /*양끝으로 서로 밀어서 양쪽 끝으로 정리된다*/
+            padding: 0 20px;
+        }
+
+         nav{background-color: #777; border-radius: 20px; }
+         nav>ul{
+            list-style: none;  /* ul안에 있는 li 표의 스타일을 지운다 */
+            display: flex;  
+         }
+         nav>ul>li{
+            background-color: #777;
+            width: 120px;
+            height: 50px;
+            
+         }
+         nav>ul>li>a{
+            color: white;
+            text-decoration: none;
+            display: flex;
+            height: 50px;
+            justify-content: center; /* 자식의 위치를 잡아주는 역할 */
+            align-items: center;
+         }
+         nav>ul>li>a:hover {
+            background-color: black;
+         }
+         nav>ul{
+            margin-bottom: 0;
+         }
+       
