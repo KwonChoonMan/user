@@ -1,0 +1,19 @@
+* { margin: 0; padding: 0; box-sizing: border-box;} /*1.전체 선택자 */
+#aa{ width: 1000px; margin: 0 auto;} /* 2. header nav main aside footer를 감싸고 있는 div id = "aa"*/
+header , nav , footer { height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid black;}/*3번째 모양잡아주기*/
+header{letter-spacing: 1.5em;} /* 헤더안에 있는 글자 간격 */
+header , nav , footer { margin-bottom: 10px;} /* 4번째 아래 간격 조절 */ 
+aside{width: 100px; height: 200px; background-color: gray; border-radius: 20px;} /* 5.어사이드 너비와 높이 색깔 모양 잡아주기 */
+section{width: 800px; min-height: 600px;} /* 6.색션 너비와 최소높이 */
+main{display: flex;}  /* 7.모양 바로잡아주기 */
+#bb{ width: 300px; height: 30px; border: 1px solid #ddd; border-radius: 20px; display: flex; align-items: center;} /*8.검색창 크기조절과 틀 색깔 */
+#bb input{ width: 250px; margin-left: 20px; margin-right: 5px; border: none;} /* 9.검색창 너비와 좌우 조절과 테두리 제거 */ 
+footer{width: 1000px; background-color: gray; border-radius: 20px;} /*footer 모양잡는거 */
+header{ display: flex; justify-content: space-between; padding: 0 20px;}
+nav{background-color: #777; border-radius: 20px;}  /* nav모양잡는거 */
+nav>ul{ list-style: none; display: flex;} /* ul의 점을 지우고 ul 의 글자들을 가운데로 정렬 */
+nav>ul>li{ background-color: #777; width: 120px; height: 50px;} /* li의 컬러와 너비 높이 */
+nav>ul>li>a{ color: white; text-decoration: none; display: flex; height: 50px; justify-content: center; align-items: center;}
+ /*nav안에 ul안에 <li><a href="#">글자</a></li> 글자 색깔 바꾸기 글자 밑에 그어진 선 지우기 높이랑 글자를 가운데로 정렬*/
+nav>ul>li>a:hover{ background-color: black;}  /*nav안에 있는 글자를 위에 올렸을때 변하는 색깔*/
+nav>ul{margin-bottom: 0;}  /*nav에 ul쪽에 튀어나와있는것을 막아준다*/

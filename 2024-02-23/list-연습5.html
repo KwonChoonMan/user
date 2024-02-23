@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        function getPagination({pageno , pagesize, totalcount, blockSize=5}) {
+             const 페이지 = Math.floor((totalcount-1)/blockSize)+1;
+             const prev = Math.floor((pageno-1)/blockSize)*blockSize;
+             const start=prev+1;
+             let end = prev+blockSize;
+             let next=end+1;
+             if(end>=페이지) {
+                end = 페이지;
+                next - 0;
+             }
+             return {prev, start , end , next , pageno};
+        }
+        
+        function printPagination({prev, start , end , next , pageno}) {
+            // a b : 하위(자손)선택자 , a 내부의 b
+            // a>b : 자식선택자 . a의 자식인 b 
+            const $ul = $('#pagination>ul');
+           if(prev>0) {
+                const h= `
+                    <li class="page-item">
+                        <a class="page-link" href="read.html?pageno=${prev}">PREV</a>
+                    </li>
+                    `;
+                $ul.append(h);
+            }
+        }
+        
+        function printContact(contacts) {
+
+        }
+        $(document).ready(async function () {
+            try {
+                const result = await $.ajax('http://sample.bmaster.kro.kr/contacts');
+                console.log(result)
+                printPagination(Pagination);
+                printContact(result.contact);
+            } catch (err) {
+              console.log(err);
+            }
+        });
+    </script>
+    <style>
+        #pagination {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <div id="pagination">
+            <ul class="pagination">
+            </ul>
+        </div>
+    </table>
+</body>
+
+</html>

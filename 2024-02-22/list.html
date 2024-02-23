@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>연락처 관리 - 목록</title>
+  <script>
+    $(document).ready(function() {     // 코드가 위에서 부터 아래로 실행되기 때문에 아래코드를 불러와야하는 기능이 위에있어 코드가 모두 준비가 되면 그다음순서로 실행하겠다는 코드
+      $.ajax({  // ajax가  프론트엔드랑 백을 연결해주는 다리이다 
+        url:'http://192.168.0.177:8081/list', // 내가 원하는 기능이 실행되는 주소 api
+        success:function(result) {           //  주소에서 실행되는 코드가 성공하면 실행인데 코드에서 넘어온 값을 result인데  다른 이름도 쓸  수 있다 
+          const $tbody = $('#tbody');        // tbody의 위치를 저장해준다 
+          for(let c of result) {             //  ajax에서 실행되어 넘어온 값이 전부 result에 담겨있기 때문에 하나씩 꺼내어 사용하기 위해 c라는 변수를 이용해 하나씩 출력하는 것이다. 
+                                              // ex : result에 10명이 적은 게시물의 정보가 들어 있을때 1줄에 한명씩 출력하기 위해 c로 지정하고
+                                              // let html에  tr,td, a의 형식으로 c의 1번째 글의 값, 2번째,3번째 순서적으로 넣어준다 이때 지정한 tbody에 위치에 적어둔 html을 넣어주고
+                                              // 다시 처음으로 돌아와서 2번째 사람의 정보를 넣어준다. for문은 넣을수 있는 값이 없을때 까지 반복한다.
+             let html = `
+              <tr>
+                <td>${c.cno}</td>
+                <td>
+                  <a href="read.html?cno=${c.cno}">${c.name}</a>
+                </td>
+                <td>${c.address}</td>
+                <td>${c.tel}</td>
+              </tr>
+            `;
+            $tbody.append(html);
+          }
+        }
+      })
+    })
+  </script>
+</head>
+<body>
+  <div id="page">
+    <header>
+      <h1>연락처 관리</h1>
+      <div id="search">
+        <input type="text" placeholder="검색어를 입력하세요">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="list.html">HOME</a></li>
+        <li><a href="write.html">WRITE</a></li>
+      </ul>
+    </nav>
+    <main>
+      <aside>
+      </aside>
+      <section>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>이름</th>
+              <th>주소</th>
+              <th>연락처</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+          </tbody>
+        </table>
+      </section>
+      <aside>
+      </aside>
+    </main>
+    <footer>
+      copyright &copy;2024 All Right Reserved
+    </footer>
+  </div>
+</body>
+</html>
